@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYROX - Ultimate Esports Arena</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --primary-bg: #0F172A;
+            --secondary-bg: #1E293B;
+            --text-primary: #E2E8F0;
+            --text-secondary: #94A3B8;
+            --accent-color: #FACC15;
+            --border-color: #334155;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+        
+        .text-accent {
+            color: var(--accent-color) !important;
+        }
+        
+        .bg-primary-custom {
+            background-color: var(--primary-bg);
+        }
+        
+        .bg-secondary-custom {
+            background-color: var(--secondary-bg);
+        }
+        
+        .border-custom {
+            border-color: var(--border-color) !important;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .logo-frame {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 12px;
+            border: 2px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-frame img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        .dropdown-menu {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .dropdown-item {
+            color: var(--text-primary);
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background: var(--accent-color);
+            color: var(--primary-bg) !important;
+        }
+        
+        .btn-primary-custom {
+            background: var(--accent-color);
+            color: #0F172A;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            background: #e6b800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(250, 204, 21, 0.25);
+        }
+        
+        .btn-secondary-custom {
+            background: transparent;
+            color: var(--text-primary);
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary-custom:hover {
+            background: rgba(250, 204, 21, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 40px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-headline {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .hero-subhead {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 25px;
+            text-align: center;
+        }
+        
+        .hero-image {
+            max-width: 100%;
+            margin: 30px auto 0;
+            position: relative;
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        /* Tournament Countdown */
+        .tournament-countdown {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 16px;
+            padding: 15px;
+            margin: 25px auto;
+            max-width: 100%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(250, 204, 21, 0.2);
+        }
+        
+        .countdown-title {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-box {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .countdown-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Section Titles - Fixed Centering */
+        .section-title-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Game Selector */
+        .game-selector-section {
+            padding: 50px 0;
+            background: var(--secondary-bg);
+        }
+        
+        .game-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .category-btn {
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            border-color: var(--accent-color);
+        }
+        
+        .game-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .game-card {
+            background: var(--primary-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent-color);
+        }
+        
+        .game-card-img {
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .game-card-img img {
+            max-width: 120px;
+            max-height: 120px;
+        }
+        
+        .game-card-content {
+            padding: 15px;
+        }
+        
+        .game-card-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .game-card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 50px 0;
+        }
+        
+        .step-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px 15px;
+            text-align: center;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.05);
+            line-height: 1;
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .step-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .step-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Features */
+        .features-section {
+            padding: 50px 0;
+            background: var(--secondary-bg);
+        }
+        
+        .feature-card {
+            background: var(--primary-bg);
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ */
+        .faq-section {
+            padding: 50px 0;
+        }
+        
+        .accordion {
+            --bs-accordion-bg: var(--secondary-bg);
+            --bs-accordion-border-color: var(--border-color);
+            --bs-accordion-color: var(--text-primary);
+            --bs-accordion-btn-color: var(--text-primary);
+            --bs-accordion-active-color: var(--text-primary);
+            --bs-accordion-active-bg: rgba(250, 204, 21, 0.1);
+            --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(250, 204, 21, 0.25);
+        }
+        
+        .accordion-button {
+            font-weight: 600;
+            padding: 15px;
+            font-size: 1rem;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            color: var(--accent-color);
+        }
+        
+        .accordion-body {
+            color: var(--text-secondary);
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Leaderboard */
+        .leaderboard-section {
+            padding: 50px 0;
+            background: linear-gradient(135deg, #0a0f1f 0%, #1E293B 100%);
+        }
+        
+        .leaderboard-container {
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+        
+        .leaderboard-header {
+            display: grid;
+            grid-template-columns: 40px 1fr 90px 70px;
+            padding: 15px 10px;
+            background: rgba(250, 204, 21, 0.1);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+        }
+        
+        .leaderboard-row {
+            display: grid;
+            grid-template-columns: 40px 1fr 90px 70px;
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.3s ease;
+            font-size: 0.85rem;
+        }
+        
+        .leaderboard-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .rank {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .rank-1 { color: gold; }
+        .rank-2 { color: silver; }
+        .rank-3 { color: #cd7f32; }
+        
+        .player-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .player-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--secondary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent-color);
+            border: 2px solid var(--border-color);
+            font-size: 0.8rem;
+        }
+        
+        .winnings {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .winnings i {
+            color: var(--accent-color);
+            margin-right: 3px;
+            font-size: 0.8rem;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 30px 0 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .disclaimer {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            max-width: 600px;
+            margin: 0 auto 15px;
+            text-align: center;
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .logo-frame {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .hero-section {
+                padding: 80px 0 60px;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+            }
+            
+            .hero-headline {
+                font-size: 3rem;
+                margin-bottom: 24px;
+            }
+            
+            .hero-subhead {
+                font-size: 1.25rem;
+                margin-bottom: 40px;
+            }
+            
+            .tournament-countdown {
+                padding: 20px;
+                margin: 40px auto;
+                max-width: 700px;
+            }
+            
+            .countdown-box {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+            
+            .game-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 25px;
+            }
+            
+            .game-card-img {
+                height: 180px;
+            }
+            
+            .game-card-img img {
+                max-width: 140px;
+                max-height: 140px;
+            }
+            
+            .game-card-title {
+                font-size: 1.3rem;
+            }
+            
+            .step-card {
+                padding: 30px 20px;
+                margin-bottom: 0;
+            }
+            
+            .step-icon {
+                font-size: 3rem;
+                margin-bottom: 20px;
+            }
+            
+            .step-title {
+                font-size: 1.5rem;
+            }
+            
+            .feature-card {
+                padding: 30px 25px;
+            }
+            
+            .feature-icon {
+                font-size: 2.5rem;
+            }
+            
+            .feature-title {
+                font-size: 1.5rem;
+            }
+            
+            .leaderboard-header, .leaderboard-row {
+                grid-template-columns: 50px 1fr 120px 100px;
+                padding: 20px 15px;
+                font-size: 1rem;
+            }
+            
+            .player-avatar {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title::after {
+                width: 100px;
+                height: 5px;
+                margin: 20px auto 0;
+            }
+        }
+        
+        /* Modal Customization */
+        .modal-content {
+            background: var(--secondary-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .modal-title {
+            font-weight: 700;
+        }
+        
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .highlight-app {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo-frame">
+                    <img src="https://i.ibb.co/zW564FHp/Picsart-25-08-01-21-01-59-826.png" alt="[ZYROX] Logo">
+                </div>
+                Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How to Play</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#game-selector">Tournaments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#leaderboard">Leaderboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#faq">FAQ</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#fairPlayModal">Fair Play Policy</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#refundModal">Refund Policy</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://www.mediafire.com/file/g2lu5n2azal4r3j/ZYROX.apk/file" target="_blank" class="btn btn-primary-custom ms-lg-3 mt-3 mt-lg-0">Download App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="hero-headline fade-in-up">Ultimate Gaming <span class="text-accent">Esports Arena</span> is Here</h1>
+                    <p class="hero-subhead fade-in-up">Join thousands of gamers in thrilling tournaments. Showcase your skills, compete for massive prizes, and become a champion in Bangladesh's fastest-growing gaming community.</p>
+                    
+                    <div class="hero-buttons fade-in-up">
+                        <a href="https://www.mediafire.com/file/g2lu5n2azal4r3j/ZYROX.apk/file" target="_blank" class="btn btn-primary-custom btn-lg">Download & Start Playing</a>
+                        <a href="https://www.mediafire.com/file/g2lu5n2azal4r3j/ZYROX.apk/file" target="_blank" class="btn btn-secondary-custom btn-lg">Get ৳10 FREE on Signup!</a>
+                        
+                    </div>
+                    
+                    
+                    <!-- Tournament Countdown -->
+                    <div class="tournament-countdown fade-in-up">
+                        <h4 class="countdown-title" id="countdown-title">MAJOR TOURNAMENT STARTS IN</h4>
+                        <div class="countdown-container">
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="days">10</div>
+                                <div class="countdown-label">Days</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="hours">00</div>
+                                <div class="countdown-label">Hours</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="minutes">00</div>
+                                <div class="countdown-label">Minutes</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="seconds">00</div>
+                                <div class="countdown-label">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Selector Section -->
+    <section class="game-selector-section" id="game-selector">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h2 class="section-title fade-in-up">Tournaments for Your Favorite Games</h2>
+                </div>
+            </div>
+            
+            <div class="game-categories fade-in-up">
+                <button class="category-btn active" data-category="all">All Games</button>
+                <button class="category-btn active" data-category="all">All Games</button>
+                <button class="category-btn" data-category="battle">Battle Royale</button>
+                <button class="category-btn" data-category="strategy">Strategy</button>
+                <button class="category-btn" data-category="action">Action</button>
+            </div>
+            
+            <div class="game-grid">
+                <!-- Game Cards -->
+                
+                <div class="game-card fade-in-up" data-category="battle">
+                    <div class="game-card-img">
+                        <img src="https://i.ibb.co.com/0jc8mVBD/Picsart-25-08-07-02-43-31-876.png" alt="Free Fire ">
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title"><span class="text-accent fw-bold">Free Fire</span></h3>
+                        <p>Survival's a rush. Dominate the battleground.</p>
+                        <div class="game-card-meta">
+                            <span><span class="text-accent fw-bold">8.5K Players</span></span>
+                            <span><span class="text-accent fw-bold">৳85K Prize</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card fade-in-up" data-category="battle">
+                    <div class="game-card-img">
+                        <img src="https://i.ibb.co.com/93VgKQsp/Picsart-25-08-07-02-35-47-962.png" alt="PUBG">
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title"><span class="text-accent fw-bold">PUBG</span></h3>
+                        <p>Drop in, gear up, fight to be the last squad standing.</p>
+                        <div class="game-card-meta">
+                            <span><span class="text-accent fw-bold">6.3K Players</span></span>
+                            <span><span class="text-accent fw-bold">৳75K Prize</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card fade-in-up" data-category="strategy">
+                    <div class="game-card-img">
+                        <img src="https://i.ibb.co.com/NnQMpvdv/Picsart-25-08-07-02-50-16-947.png" alt="Among Us">
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title"><span class="text-accent fw-bold">Among Us</span></h3>
+                        <p>Trust no one. Sabotage everything. Find the Impostor.</p>
+                        <div class="game-card-meta">
+                            <span><span class="text-accent fw-bold">5.8K Players</span></span>
+                            <span><span class="text-accent fw-bold">৳60K Prize</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card fade-in-up" data-category="strategy">
+                    <div class="game-card-img">
+                        <img src="https://i.ibb.co.com/SD3kNFk2/Picsart-25-08-07-02-39-35-969.png" alt="LUDO">
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title"><span class="text-accent fw-bold">LUDO</span></h3>
+                        <p>Roll ruthless. Crush rivals. Claim the crown.</p>
+                        <div class="game-card-meta">
+                            <span><span class="text-accent fw-bold">15.8K Players</span></span>
+                            <span><span class="text-accent fw-bold">৳60K Prize</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card fade-in-up" data-category="strategy">
+                    <div class="game-card-img">
+                        <img src="https://i.ibb.co.com/3yj1fdTg/Picsart-25-08-07-02-46-44-661.png" alt="8 Ball Pool">
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title"><span class="text-accent fw-bold">8 Ball Pool</span></h3>
+                        <p>Line up the shot. Sink the win. Own the table.</p>
+                        <div class="game-card-meta">
+                            <span><span class="text-accent fw-bold">5.8K Players</span></span>
+                            <span><span class="text-accent fw-bold">৳60K Prize</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card fade-in-up" data-category="strategy">
+                    <div class="game-card-img">
+                        <img src="https://i.ibb.co.com/FFy7QnJ/Picsart-25-08-07-02-59-51-787.png" alt="FIFA Mobile">
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title"><span class="text-accent fw-bold">FIFA Mobile</span></h3>
+                        <p>Skill moves. Screamers. Seize the glory.</p>
+                        <div class="game-card-meta">
+                            <span><span class="text-accent fw-bold">5.8K Players</span></span>
+                            <span><span class="text-accent fw-bold">৳60K Prize</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card fade-in-up" data-category="action">
+                    <div class="game-card-img">
+                        <img src="https://i.ibb.co.com/spHLKfbm/Picsart-25-08-07-02-31-17-151.png" alt="Call of Duty Mobile" >
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title"><span class="text-accent fw-bold">Call of Duty</span></h3>
+                        <p>Lock & load. Fast-paced firefights. Total domination.</p>
+                        <div class="game-card-meta">
+                            <span><span class="text-accent fw-bold">7.2K Players</span></span>
+                            <span><span class="text-accent fw-bold">৳95K Prize</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card fade-in-up" data-category="action">
+                    <div class="game-card-img">
+                        <img src="https://i.ibb.co.com/ymbtLTzH/Picsart-25-08-07-02-55-47-314.png" alt="Valorant">
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title"><span class="text-accent fw-bold">Valorant</span></h3>
+                        <p>Precision aim, lethal abilities. Clutch the round.</p>
+                        <div class="game-card-meta">
+                            <span><span class="text-accent fw-bold">9.1K Players</span></span>
+                            <span><span class="text-accent fw-bold">৳1.5L Prize</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h2 class="section-title fade-in-up">How It Works</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="step-card">
+                        <span class="step-number">01</span>
+                        <div class="step-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <h3 class="step-title">Download & Register</h3>
+                        <p class="step-description">Download the app and create your account with a few simple steps. Get ৳10 free credit instantly!</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="step-card">
+                        <span class="step-number">02</span>
+                        <div class="step-icon">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+                        <h3 class="step-title">Join a Tournament</h3>
+                        <p class="step-description">Browse through dozens of tournaments happening right now. Choose your game and entry level.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="step-card">
+                        <span class="step-number">03</span>
+                        <div class="step-icon">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
+                        <h3 class="step-title">Play, Win & Withdraw</h3>
+                        <p class="step-description">Compete against players of similar skill level. Win real cash prizes and withdraw instantly to your account!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h2 class="section-title fade-in-up">Why Gamers Choose [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X]</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 fade-in-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        <h3 class="feature-title">100% Secure & Fair Play</h3>
+                        <p class="feature-description">Our advanced algorithms ensure every match is fair. Player verification and anti-cheat systems guarantee a level playing field for everyone.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+                        <h3 class="feature-title">Instant Withdrawals</h3>
+                        <p class="feature-description">Get your winnings in seconds, not days. Multiple withdrawal options including BKash, Nogod, and bank transfer with zero processing fees.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3 class="feature-title">Generous Referral Program</h3>
+                        <p class="feature-description">Invite friends and earn ৳50 for each successful referral. Plus, get 10% of their tournament fees for 3 months!</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3 class="feature-title">24/7 Customer Support</h3>
+                        <p class="feature-description">Our dedicated support team is available round the clock to resolve any issues. Average response time: under 10 minutes!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h2 class="section-title fade-in-up">Frequently Asked Questions</h2>
+                </div>
+            </div>
+            
+            <div class="accordion fade-in-up" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Is it legal to play tournaments on<span class="text-accent fw-bold">[ZYROX]</span>?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, absolutely. <span class="text-accent fw-bold">[ZYROX]</span> operates in full compliance with Bangladeshn gaming laws. We offer skill-based gaming tournaments where success depends entirely on player ability. All games require significant skill and strategy to win.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            How quickly can I withdraw my winnings?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Withdrawals are processed instantly 24/7. Once you request a withdrawal, funds typically appear in your account within 2-5 minutes for BKash transfers, and within 30 minutes for other payment methods. There's no minimum withdrawal amount for BKash transfers.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Are there free tournaments available?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! <span class="text-accent fw-bold">[ZYROX]</span> offers multiple free tournaments every day with real cash prizes. New users get special access to beginner tournaments with guaranteed prizes. We also host practice tournaments where you can hone your skills without any entry fee.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            What devices are supported?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <span class="text-accent fw-bold">[ZYROX]</span> is compatible with both Android and iOS devices. Our app supports Android 8.0+ and iOS 13.0+. For optimal performance, we recommend devices with at least 3GB RAM. You can download our app from Google Play or the App Store.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard-section" id="leaderboard">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h2 class="section-title fade-in-up">Top Players This Week</h2>
+                </div>
+            </div>
+            
+            <div class="leaderboard-container fade-in-up">
+                <div class="leaderboard-header">
+                    <div>Rank</div>
+                    <div>Player</div>
+                    <div>Winnings</div>
+                    <div>Matches</div>
+                </div>
+                
+                <div class="leaderboard-content">
+                    <!-- Row 1 -->
+                    <div class="leaderboard-row">
+                        <div class="rank rank-1">1</div>
+                        <div class="player-info">
+                            <div class="player-avatar">P</div>
+                            <div>ProGamer99</div>
+                        </div>
+                        <div class="winnings"><i class="bi bi-currency-taka"> ৳</i></i> 42,850</div>
+                        <div>128</div>
+                    </div>
+                    
+                    <!-- Row 2 -->
+                    <div class="leaderboard-row">
+                        <div class="rank rank-2">2</div>
+                        <div class="player-info">
+                            <div class="player-avatar">S</div>
+                            <div>ShadowHunter</div>
+                        </div>
+                        <div class="winnings"><i class="bi bi-currency-taka"> ৳</i></i> 38,200</div>
+                        <div>142</div>
+                    </div>
+                    
+                    <!-- Row 3 -->
+                    <div class="leaderboard-row">
+                        <div class="rank rank-3">3</div>
+                        <div class="player-info">
+                            <div class="player-avatar">V</div>
+                            <div>ViperX</div>
+                        </div>
+                        <div class="winnings"><i class="bi bi-currency-taka"> ৳</i></i> 35,600</div>
+                        <div>115</div>
+                    </div>
+                    
+                    <!-- Row 4 -->
+                    <div class="leaderboard-row">
+                        <div class="rank">4</div>
+                        <div class="player-info">
+                            <div class="player-avatar">R</div>
+                            <div>RogueAssassin</div>
+                        </div>
+                        <div class="winnings"><i class="bi bi-currency-taka"> ৳</i></i> 28,750</div>
+                        <div>96</div>
+                    </div>
+                    
+                    <!-- Row 5 -->
+                    <div class="leaderboard-row">
+                        <div class="rank">5</div>
+                        <div class="player-info">
+                            <div class="player-avatar">D</div>
+                            <div>DarkPhoenix</div>
+                        </div>
+                        <div class="winnings"><i class="bi bi-currency-taka"> ৳</i></i> 25,300</div>
+                        <div>88</div>
+                    </div>
+                    
+                    <!-- Row 6 -->
+                    <div class="leaderboard-row">
+                        <div class="rank">6</div>
+                        <div class="player-info">
+                            <div class="player-avatar">N</div>
+                            <div>NinjaWarrior</div>
+                        </div>
+                        <div class="winnings"><i class="bi bi-currency-taka"> ৳</i></i> 22,150</div>
+                        <div>79</div>
+                    </div>
+                    
+                    <!-- Row 7 -->
+                    <div class="leaderboard-row">
+                        <div class="rank">7</div>
+                        <div class="player-info">
+                            <div class="player-avatar">L</div>
+                            <div>LethalStrike</div>
+                        </div>
+                        <div class="winnings"><i class="bi bi-currency-taka"> ৳</i></i> 19,800</div>
+                        <div>72</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <h3 class="mb-3">[ Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X]</h3>
+            <p class="disclaimer">This game involves an element of <span class="text-accent">financial risk</span> and may be addictive.<span class="text-accent">play responsibly</span> and only if you are <span class="text-accent">18+.</span></p>
+            <p class="copyright">© 2023 [ Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X]. All rights reserved.</p><p class="copyright">FF Digital, <span class="text-accent fw-bold">Bangladesh.</span></p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This Privacy Policy describes how [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X] ("we," "us," or "our") collects, uses, and discloses information about you when you use our mobile application (the "App") and our website (the "Site").</p>
+                    
+                    <h5><span class="text-accent">1. Information We Collect</span></h5>
+                    <p>We may collect personal information that you provide to us, such as your name, email address, mobile number, and payment information. We also collect non-personal information, including device information, usage data, and tournament history.</p>
+
+                    <h5><span class="text-accent">2. How We Use Your Information</span></h5>
+                    <p>We use the information we collect to:</p>
+                    <ul>
+                        <li>Provide and maintain our services.</li>
+                        <li>Process your tournament entries and prize payouts.</li>
+                        <li>Communicate with you about your account, tournaments, and promotions.</li>
+                        <li>Improve our App and services.</li>
+                        <li>Ensure fair play and prevent fraud.</li>
+                    </ul>
+
+                    <h5><span class="text-accent">3. Sharing Your Information</span></h5>
+                    <p>We do not sell or rent your personal information to third parties. We may share your information with trusted third-party service providers who assist us in operating our business, such as payment processors and customer support platforms. We may also share information as required by law.</p>
+
+                    <h5><span class="text-accent">4. Data Security</span></h5>
+                    <p>We implement a variety of security measures to protect your personal information. However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your data, we cannot guarantee its absolute security.</p>
+
+                    <h5><span class="text-accent">5. Your Rights</span></h5>
+                    <p>You have the right to access, correct, or delete your personal information. You can do this by contacting our customer support team.</p>
+
+                    <p>By using the [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X] app, you agree to the collection and use of information in accordance with this policy. This policy is effective as of July 1, 2023.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms & Conditions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X]. These Terms and Conditions govern your use of the [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X] mobile application and its related services.</p>
+
+                    <h5><span class="text-accent">1. Eligibility</span></h5>
+                    <p>You must be at least 18 years of age to use our services. By using the app, you confirm that you meet this requirement and are legally capable of entering into a binding contract.</p>
+
+                    <h5><span class="text-accent">2. Account Registration</span></h5>
+                    <p>You agree to provide accurate and complete information during registration and to keep this information up to date. You are responsible for all activities that occur under your account.</p>
+
+                    <h5><span class="text-accent">3. Fair Play</span></h5>
+                    <p>We are committed to maintaining a fair and secure gaming environment. You agree to abide by our Fair Play Policy, which prohibits cheating, collusion, and any other form of fraudulent activity. Violations may result in account suspension and forfeiture of winnings.</p>
+
+                    <h5><span class="text-accent">4. Financial Transactions</span></h5>
+                    <p>All financial transactions are subject to these terms. You agree that all deposits made to your account are for the purpose of playing on the platform. Winnings can be withdrawn according to our withdrawal policy.</p>
+
+                    <h5><span class="text-accent">5. Intellectual Property</span></h5>
+                    <p>The [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X] brand, logo, and all content on the app are the exclusive property of [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X]. You may not copy, reproduce, or distribute any part of our services without our express written permission.</p>
+
+                    <p>By using our services, you agree to these Terms and Conditions. We reserve the right to modify these terms at any time. Your continued use of the app after any changes constitutes your acceptance of the new terms.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fair Play Policy Modal -->
+    <div class="modal fade" id="fairPlayModal" tabindex="-1" aria-labelledby="fairPlayModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fairPlayModalLabel">Fair Play Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>At [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X], we are dedicated to providing a safe, fair, and competitive gaming environment for all our players. This Fair Play Policy outlines the rules and regulations that all users must follow.</p>
+
+                    <h5><span class="text-accent">1. No Cheating</span></h5>
+                    <p>The use of any unauthorized programs, scripts, bots, or other software to gain an unfair advantage is strictly prohibited. This includes, but is not limited to, aimbots, wallhacks, and any form of automated gameplay.</p>
+
+                    <h5><span class="text-accent">2. No Collusion</span></h5>
+                    <p>Players must compete against each other without any form of pre-arranged cooperation. Collusion, or working together with other players in a tournament, is a serious offense that will result in immediate disqualification and account suspension.</p>
+
+                    <h5><span class="text-accent">3. Account Integrity</span></h5>
+                    <p>You are responsible for the security of your account. You may not share your account details or allow anyone else to play on your behalf. Any activity traced to your account is your sole responsibility.</p>
+
+                    <h5><span class="text-accent">4. Reporting Violations</span></h5>
+                    <p>If you suspect another player of violating this policy, please report it to our support team with as much detail and evidence as possible. We take all reports seriously and will conduct a thorough investigation.</p>
+
+                    <p>Violations of this policy will result in penalties, including permanent account bans, forfeiture of winnings, and removal from leaderboards. We reserve the right to take any action necessary to protect the integrity of our platform.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Refund Policy Modal -->
+    <div class="modal fade" id="refundModal" tabindex="-1" aria-labelledby="refundModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="refundModalLabel">Refund Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This Refund Policy explains the conditions under which refunds may be issued by [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X].</p>
+
+                    <h5><span class="text-accent">1. Tournament Entry Fees</span></h5>
+                    <p>A full refund of your tournament entry fee will be issued if:</p>
+                    <ul>
+                        <li>The tournament is canceled by [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X] for any reason.</li>
+                        <li>You cancel your participation before the tournament registration deadline.</li>
+                    </ul>
+                    <p>No refunds will be issued once a tournament has started or after the registration period has closed.</p>
+
+                    <h5><span class="text-accent">2. Unused Wallet Balance</span></h5>
+                    <p>You may request a withdrawal of your unused and withdrawable wallet balance at any time, subject to our withdrawal policy. This is not a refund, but a standard withdrawal of funds you have won or deposited and not yet used.</p>
+
+                    <h5><span class="text-accent">3. Technical Issues</span></h5>
+                    <p>If you experience a technical issue that prevents you from participating in a tournament, you may be eligible for a refund. To be considered, you must report the issue to our support team immediately. We will investigate the issue and, if it is determined to be a platform-side error, we will issue a full refund for that tournament entry fee.</p>
+
+                    <p>All refund decisions are at the sole discretion of [Z<span class="text-accent">Y</span>R<span class="text-accent">O</span>X]. By participating in tournaments, you agree to this Refund Policy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Tournament Countdown
+        function updateCountdown() {
+            const tournamentDate = new Date('2025-12-31T19:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = tournamentDate - now;
+            
+            const countdownTitle = document.getElementById('countdown-title');
+            
+            if (diff <= 0) {
+                // Tournament has started or passed
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                countdownTitle.textContent = 'TOURNAMENT IS LIVE!';
+            } else {
+                // Tournament is still in the future
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                countdownTitle.textContent = 'MAJOR TOURNAMENT STARTS IN';
+            }
+        }
+        
+        // Game Selector Filter
+        function setupGameSelector() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const gameCards = document.querySelectorAll('.game-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const category = button.getAttribute('data-category');
+                    
+                    // Filter game cards
+                    gameCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start countdown
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+            
+            // Setup game selector
+            setupGameSelector();
+            
+            // Fade-in-up animation
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('appear');
+                    }
+                });
+            };
+            
+            // Initial check
+            fadeInOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+        });
+    </script>
+</body>
+</html>
+
